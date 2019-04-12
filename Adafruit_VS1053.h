@@ -194,6 +194,11 @@ public:
    */
   void setVolume(uint8_t left, uint8_t right);
   /*!
+   * @brief Set the output volume for the chip
+   * @param volume Desired volume for both left and right
+   */
+  void setVolume(uint8_t volume);
+  /*!
    * @brief Prints the contents of the MODE, STATUS, CLOCKF and VOLUME registers
    */
   void dumpRegs(void);
