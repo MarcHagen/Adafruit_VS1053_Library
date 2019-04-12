@@ -456,6 +456,10 @@ void Adafruit_VS1053::playData(uint8_t *buffer, uint8_t buffsiz) {
 #endif
 }
 
+void Adafruit_VS1053::setVolume(uint8_t volume) {
+  setVolume(volume, volume);
+}
+
 void Adafruit_VS1053::setVolume(uint8_t left, uint8_t right) {
   // accepts values between 0 and 255 for left and right.
   uint16_t v;
