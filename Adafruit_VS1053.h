@@ -55,10 +55,8 @@ typedef uint8_t PortMask; //!< Type definition for a bitmask that is used to
 typedef volatile RwReg PortReg; //!< Type definition/alias used to specify the
                                 //!< port register that a pin is in
 
-#define VS1053_FILEPLAYER_TIMER0_INT                                           \
-  255 //!< Allows useInterrupt to accept pins 0 to 254
-#define VS1053_FILEPLAYER_PIN_INT                                              \
-  5 //!< Allows useInterrupt to accept pins 0 to 4
+#define VS1053_FILEPLAYER_TIMER0_INT 255 //!< Allows useInterrupt to accept pins 0 to 254
+#define VS1053_FILEPLAYER_PIN_INT 5 //!< Allows useInterrupt to accept pins 0 to 4
 
 #define VS1053_SCI_READ 0x03  //!< Serial read address
 #define VS1053_SCI_WRITE 0x02 //!< Serial write address
@@ -81,8 +79,7 @@ typedef volatile RwReg PortReg; //!< Type definition/alias used to specify the
 
 #define VS1053_INT_ENABLE 0xC01A //!< Interrupt enable
 
-#define VS1053_MODE_SM_DIFF                                                    \
-  0x0001 //!< Differential, 0: normal in-phase audio, 1: left channel inverted
+#define VS1053_MODE_SM_DIFF 0x0001     //!< Differential, 0: normal in-phase audio, 1: left channel inverted
 #define VS1053_MODE_SM_LAYER12 0x0002  //!< Allow MPEG layers I & II
 #define VS1053_MODE_SM_RESET 0x0004    //!< Soft reset
 #define VS1053_MODE_SM_CANCEL 0x0008   //!< Cancel decoding current file
@@ -91,21 +88,14 @@ typedef volatile RwReg PortReg; //!< Type definition/alias used to specify the
 #define VS1053_MODE_SM_STREAM 0x0040   //!< Stream mode
 #define VS1053_MODE_SM_SDINEW 0x0800   //!< VS1002 native SPI modes
 #define VS1053_MODE_SM_ADPCM 0x1000    //!< PCM/ADPCM recording active
-#define VS1053_MODE_SM_LINE1 0x4000 //!< MIC/LINE1 selector, 0: MICP, 1: LINE1
-#define VS1053_MODE_SM_CLKRANGE                                                \
-  0x8000 //!< Input clock range, 0: 12..13 MHz, 1: 24..26 MHz
+#define VS1053_MODE_SM_LINE1 0x4000    //!< MIC/LINE1 selector, 0: MICP, 1: LINE1
+#define VS1053_MODE_SM_CLKRANGE 0x8000 //!< Input clock range, 0: 12..13 MHz, 1: 24..26 MHz
 
-#define VS1053_SCI_AIADDR                                                      \
-  0x0A //!< Indicates the start address of the application code written earlier
-       //!< with SCI_WRAMADDR and SCI_WRAM registers.
-#define VS1053_SCI_AICTRL0                                                     \
-  0x0C //!< SCI_AICTRL register 0. Used to access the user's application program
-#define VS1053_SCI_AICTRL1                                                     \
-  0x0D //!< SCI_AICTRL register 1. Used to access the user's application program
-#define VS1053_SCI_AICTRL2                                                     \
-  0x0E //!< SCI_AICTRL register 2. Used to access the user's application program
-#define VS1053_SCI_AICTRL3                                                     \
-  0x0F //!< SCI_AICTRL register 3. Used to access the user's application program
+#define VS1053_SCI_AIADDR  0x0A //!< Indicates the start address of the application code written earlier with SCI_WRAMADDR and SCI_WRAM registers.
+#define VS1053_SCI_AICTRL0 0x0C //!< SCI_AICTRL register 0. Used to access the user's application program
+#define VS1053_SCI_AICTRL1 0x0D //!< SCI_AICTRL register 1. Used to access the user's application program
+#define VS1053_SCI_AICTRL2 0x0E //!< SCI_AICTRL register 2. Used to access the user's application program
+#define VS1053_SCI_AICTRL3 0x0F //!< SCI_AICTRL register 3. Used to access the user's application program
 
 #define VS1053_DATABUFFERLEN 32 //!< Length of the data buffer
 
@@ -124,8 +114,7 @@ public:
    * @param dcs SDI Chip Select pin
    * @param dreq Data Request pin
    */
-  Adafruit_VS1053(int8_t mosi, int8_t miso, int8_t clk, int8_t rst, int8_t cs,
-                  int8_t dcs, int8_t dreq);
+  Adafruit_VS1053(int8_t mosi, int8_t miso, int8_t clk, int8_t rst, int8_t cs, int8_t dcs, int8_t dreq);
   /*!
    * @brief Hardware SPI constructor - assumes hardware SPI pins
    * @param rst Reset pin
@@ -283,8 +272,7 @@ public:
    */
   uint16_t recordedReadWord(void);
 
-  uint8_t mp3buffer[VS1053_DATABUFFERLEN]; //!< mp3 buffer that gets sent to the
-                                           //!< device
+  uint8_t mp3buffer[VS1053_DATABUFFERLEN]; //!< mp3 buffer that gets sent to the device
 
 #ifdef ARDUINO_ARCH_SAMD
 protected:
@@ -319,8 +307,7 @@ public:
    * @param dreq Data Request pin
    * @param cardCS CS pin for the SD card on the SPI bus
    */
-  Adafruit_VS1053_FilePlayer(int8_t mosi, int8_t miso, int8_t clk, int8_t rst,
-                             int8_t cs, int8_t dcs, int8_t dreq, int8_t cardCS);
+  Adafruit_VS1053_FilePlayer(int8_t mosi, int8_t miso, int8_t clk, int8_t rst, int8_t cs, int8_t dcs, int8_t dreq, int8_t cardCS);
   /*!
    * @brief Hardware SPI constructor. Uses Hardware SPI and assumes the default
    * SPI pins
@@ -330,8 +317,7 @@ public:
    * @param dreq Data Request pin
    * @param cardCS CS pin for the SD card on the SPI bus
    */
-  Adafruit_VS1053_FilePlayer(int8_t rst, int8_t cs, int8_t dcs, int8_t dreq,
-                             int8_t cardCS);
+  Adafruit_VS1053_FilePlayer(int8_t rst, int8_t cs, int8_t dcs, int8_t dreq, int8_t cardCS);
 
   /*!
    * @brief Hardware SPI constructor. Uses Hardware SPI and assumes the default
@@ -350,9 +336,8 @@ public:
   boolean begin(void);
   /*!
    * @brief Specifies the argument to use for interrupt-driven playback
-   * @param type interrupt to use. Valid arguments are
-   * VS1053_FILEPLAYER_TIMER0_INT and VS1053_FILEPLAYER_PIN_INT
-   * @return Returs true/false for success/failure
+   * @param type interrupt to use. Valid arguments are VS1053_FILEPLAYER_TIMER0_INT and VS1053_FILEPLAYER_PIN_INT
+   * @return Returns true/false for success/failure
    */
   boolean useInterrupt(uint8_t type);
   File currentTrack;             //!< File that is currently playing
@@ -375,15 +360,13 @@ public:
    */
   unsigned long mp3_ID3Jumper(File mp3);
   /*!
-   * @brief Begin playing the specified file from the SD card using
-   * interrupt-drive playback.
+   * @brief Begin playing the specified file from the SD card using interrupt-drive playback.
    * @param *trackname File to play
    * @return Returns true when file starts playing
    */
   boolean startPlayingFile(const char *trackname);
   /*!
-   * @brief Play the complete file. This function will not return until the
-   * playback is complete
+   * @brief Play the complete file. This function will not return until the playback is complete
    * @param *trackname File to play
    * @return Returns true when file starts playing
    */
