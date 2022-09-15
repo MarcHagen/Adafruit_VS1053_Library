@@ -267,7 +267,7 @@ boolean Adafruit_VS1053_FilePlayer::startPlayingFile(const char *trackname) {
   }
 
   // don't let the IRQ get triggered by accident here
-  portDISABLE_INTERRUPTS();
+  noInterrupts();
 
   // As explained in datasheet, set twice 0 in REG_DECODETIME to set time back to 0
   sciWrite(VS1053_REG_DECODETIME, 0x00);
@@ -288,13 +288,13 @@ boolean Adafruit_VS1053_FilePlayer::startPlayingFile(const char *trackname) {
 //  }
 
   // ok going forward, we can use the IRQ
-  portENABLE_INTERRUPTS();
+  interrupts();
 
   return true;
 }
 
 void Adafruit_VS1053_FilePlayer::feedBuffer(void) {
-  portENABLE_INTERRUPTS();
+  noInterrupts();
 
   // dont run twice in case interrupts collided
   // This isn't a perfect lock as it may lose one feedBuffer request if
@@ -302,11 +302,11 @@ void Adafruit_VS1053_FilePlayer::feedBuffer(void) {
   // may cause a glitch in the audio but at least it will not corrupt
   // state.
   if (feedBufferLock) {
-    portENABLE_INTERRUPTS();
+    interrupts();
     return;
   }
   feedBufferLock = true;
-  portENABLE_INTERRUPTS();
+  interrupts();
 
   feedBuffer_noLock();
 
@@ -526,15 +526,15 @@ void Adafruit_VS1053::setVolume(uint8_t left, uint8_t right) {
   v <<= 8;
   v |= right;
 
-  portDISABLE_INTERRUPTS();
+  noInterrupts();
   sciWrite(VS1053_REG_VOLUME, v);
-  portENABLE_INTERRUPTS();
+  interrupts();
 }
 
 uint16_t Adafruit_VS1053::decodeTime() {
-  portDISABLE_INTERRUPTS();
+  noInterrupts();
   uint16_t t = sciRead(VS1053_REG_DECODETIME);
-  portENABLE_INTERRUPTS();
+  interrupts();
   return t;
 }
 
