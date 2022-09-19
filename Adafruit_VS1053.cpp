@@ -278,7 +278,7 @@ boolean Adafruit_VS1053_FilePlayer::startPlayingFile(const char *trackname) {
   // wait till its ready for data
 //  while (!readyForData()) {
 //#if defined(ESP8266)
-//    ESP.wdtFeed()
+//    ESP.wdtFeed();
 //#endif
 //  }
 
@@ -339,7 +339,7 @@ void Adafruit_VS1053_FilePlayer::feedBuffer_noLock(void) {
       for (uint8_t i = 0; i <= 64; i++) {
         while (!readyForData()) {
 #if defined(ESP8266)
-          ESP.wdtFeed()
+          ESP.wdtFeed();
 #endif
         }
         playData(endFillBytes, sizeof(endFillBytes));
@@ -351,7 +351,7 @@ void Adafruit_VS1053_FilePlayer::feedBuffer_noLock(void) {
       for (uint8_t i = 0; i <= 64; i++) {
         while (!readyForData()) {
 #if defined(ESP8266)
-          ESP.wdtFeed()
+          ESP.wdtFeed();
 #endif
         }
         playData(endFillBytes, sizeof(endFillBytes));
